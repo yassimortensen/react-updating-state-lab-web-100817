@@ -9,7 +9,10 @@ class YouTubeDebugger extends React.Component{
       user: null,
       settings: {
         bitrate: 8,
-        video: { resolution: '1080p' }
+        video: {
+          resolution: '1080p',
+          camera: 'blah'
+        }
       }
     }
   }
@@ -24,11 +27,11 @@ class YouTubeDebugger extends React.Component{
   }
 
   handleResolutionClick = () => {
+    const updatedVideo = {...this.state.settings.video, resolution: 720}
+    const updatedSettings = {...this.state.settings, video: updatedVideo}
+
     this.setState({
-      settings: {
-        ...this.state.settings,
-        video: { resolution: '720p' }
-      }
+      settings: updatedSettings
     }, () => console.log(this.state.settings))
   }
 
